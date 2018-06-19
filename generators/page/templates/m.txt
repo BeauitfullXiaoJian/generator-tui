@@ -1,0 +1,31 @@
+/**
+ * 请编写模块文件说明
+ * 
+ * @author 填写作者
+ * @file   <%= moduleName %>.module.ts
+ * @date   <%= date %>
+ */
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { <%= upName %>RoutingModule, declarationComponents, entryComponents, providers } from './<%= moduleName %>.routing';
+import { ButtonModule } from 'ng-tools-ui';
+
+@NgModule({
+    imports: [
+        FormsModule,
+        ButtonModule,
+        // 这里可以导入更多的UI组件--请删除注释
+        // ----------------------请删除注释
+        // ----------------------请删除注释
+        // ----------------------请删除注释
+        // ----------------------请删除注释
+        // ----------------------请删除注释
+        // ----------------------请删除注释
+        // 这里可以导入更多的UI组件--请删除注释
+        <%= upName %>RoutingModule,
+    ],
+    declarations: [declarationComponents],
+    entryComponents: [entryComponents],
+    providers: [providers]
+})
+export class <%= upName %>Module { }

@@ -1,0 +1,19 @@
+{
+    "author": {
+        "name": "cool1024"
+    },
+    "name": "generator-tui",
+    "version": "0.0.1",
+    "description": "tools-ui-cli",
+    "files": [
+        "generators"
+    ],
+    "keywords": [
+        "yeoman-generator"
+    ],
+    "dependencies": {
+        "yeoman-generator": "^1.1.1"
+    },
+    "repository": {},
+    "license": "ISC"
+}

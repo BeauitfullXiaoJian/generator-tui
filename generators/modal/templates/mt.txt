@@ -1,0 +1,36 @@
+/**
+ * 请编写模态框文件说明
+ * 
+ * @author 填写作者
+ * @file   <%= modalName %>.component.ts
+ * @date   <%= date %>
+ */
+import { Component, OnInit } from '@angular/core';
+import { ModalService } from 'ng-tools-ui';
+
+@Component({
+    template: `
+    <div class="modal-header">
+        <h5 class="modal-title">
+            <%= modalName %>
+        </h5>
+        <button (click)="modal.dismiss()" type="button" class="close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+    </div>
+    <div class="modal-footer">
+        <button tsBtn (click)="modal.dismiss()">取消</button>
+        <button tsBtn color="primary">确认保存</button>
+    </div>`
+})
+export class <%= upModalName %>Component implements OnInit {
+
+    constructor(public modal: ModalService) { }
+
+    ngOnInit() {
+        
+    }
+}

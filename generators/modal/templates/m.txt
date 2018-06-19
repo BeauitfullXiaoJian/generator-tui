@@ -1,0 +1,21 @@
+/**
+ * 请编写模态框文件说明
+ * 
+ * @author 填写作者
+ * @file   <%= modalName %>.component.ts
+ * @date   <%= date %>
+ */
+import { Component, OnInit } from '@angular/core';
+import { ModalService } from 'ng-tools-ui';
+
+@Component({
+    templateUrl: './<%= modalName %>.component.html',
+})
+export class <%= upModalName %>Component implements OnInit {
+
+    constructor(public modal: ModalService) { }
+
+    ngOnInit() {
+        
+    }
+}

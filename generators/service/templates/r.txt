@@ -1,0 +1,36 @@
+/**
+ * 请编写路由文件说明
+ * 
+ * @author 填写作者
+ * @file   <%= moduleName %>.routing.ts
+ * @date   <%= date %>
+ */
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [
+
+];
+
+/**
+ * 指令、组件、管道声明
+ */
+
+export const declarationComponents = [];
+
+/**
+ * 动态组件（模态框，窗口）
+ */
+
+export const entryComponents = [];
+
+/**
+ * 服务列表
+ */
+export const providers = [];
+
+@NgModule({
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule]
+})
+export class <%= upName %>RoutingModule { }
