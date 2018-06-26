@@ -1,6 +1,6 @@
 /**
  * 请编写页面文件说明
- * 
+ *
  * @author 填写作者
  * @file   <%= pageName %>.component.ts
  * @date   <%= date %>
@@ -16,6 +16,6 @@ export class <%= upPageName %>Component implements OnInit {
     constructor() { }
 
     ngOnInit() {
-        
+
     }
 }

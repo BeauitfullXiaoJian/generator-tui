@@ -1,6 +1,6 @@
 /**
  * 请编写模块文件说明
- * 
+ *
  * @author 填写作者
  * @file   <%= moduleName %>.module.ts
  * @date   <%= date %>

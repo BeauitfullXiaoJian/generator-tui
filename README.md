@@ -8,6 +8,9 @@
 
 ## Usage
 
+0. create new project
+`yo tui:new`
+
 1. create module
 `yo tui:module`
 

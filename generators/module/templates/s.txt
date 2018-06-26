@@ -1,6 +1,6 @@
 /**
  * 请编写服务文件说明
- * 
+ *
  * @author 填写作者
  * @file   <%= moduleName %>.service.ts
  * @date   <%= date %>

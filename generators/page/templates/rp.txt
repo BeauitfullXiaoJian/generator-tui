@@ -1,6 +1,6 @@
 /**
  * 请编写路由文件说明
- * 
+ *
  * @author 填写作者
  * @file   <%= moduleName %>.routing.ts
  * @date   <%= date %>

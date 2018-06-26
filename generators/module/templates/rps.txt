@@ -1,6 +1,6 @@
 /**
  * 请编写路由文件说明
- * 
+ *
  * @author 填写作者
  * @file   <%= moduleName %>.routing.ts
  * @date   <%= date %>
@@ -25,7 +25,6 @@ const routes: Routes = [
 /**
  * 指令、组件、管道声明
  */
-
 export const declarationComponents = [
     <%= upPageName %>Component
 ];
