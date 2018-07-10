@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {
     Router,
     RouteConfigLoadStart,
@@ -40,6 +40,8 @@ export class AppComponent implements OnInit {
         ];
     }
 
+    @ViewChild('viewcontent') viewContent: HTMLDivElement;
+
     constructor(
         private router: Router,
         public global: GlobalService,
@@ -48,22 +50,35 @@ export class AppComponent implements OnInit {
         private confirm: ConfirmService,
         private menu: MenuService,
     ) {
+        // 加载系统主题参数
         this.global.loadStrFromStorage('color', 'primary');
+
+        // 设置全局配置参数
         this.global.setValues({
             'lazyload': true,
             'tokencheck': true,
             'showmenu': true,
         });
+
+        // 加载菜单历史记录
         this.menuPush.setDefaultItem({ title: '首页', url: '/' });
+        const items: MenuItem[] = JSON.parse(this.global.getValueFromStorage('menuPush', '[]'));
+        if (items.length > 0) { items.shift(); }
+        items.forEach(item => {
+            item.active ? (this.menuPush.setActive(item), this.setPage(item)) : this.menuPush.push(item);
+        });
     }
 
     ngOnInit() {
-        // 监听路由惰性加载状态
+        // 监听路由事件
         this.router.events.subscribe(event => {
             if (event instanceof RouteConfigLoadStart) {
                 this.global.setValue('lazyload', true);
             } else if (event instanceof NavigationEnd) {
                 this.global.setValue('lazyload', false);
+                if (this.viewContent) {
+                    this.viewContent.scrollTop = 0;
+                }
             }
         });
 
@@ -96,6 +111,7 @@ export class AppComponent implements OnInit {
     goPage(menu: MenuItem) {
         this.router.navigateByUrl(menu.url);
         this.menuPush.setActive(menu);
+        this.global.setValueToStorage('menuPush', JSON.stringify(this.menuPush.items));
     }
 
     setPage(menu: MenuItem) {

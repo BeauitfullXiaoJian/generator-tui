@@ -3,6 +3,7 @@ import { RoleGroup, Role } from '../../interfaces/role.interface';
 import { ModalService, ConfirmService } from 'ng-tools-ui';
 import { RoleModalComponent } from './role-modal.component';
 import { RoleService } from '../../services/role.service';
+import { ThrowStmt } from '@angular/compiler';
 import { FormService } from '../../../../cores/services';
 import { switchMap } from 'rxjs/operators';
 import { ApiData } from '../../../../cores/classes';

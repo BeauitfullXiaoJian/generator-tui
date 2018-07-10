@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { SortablejsModule } from 'angular-sortablejs';
+
 /**
  * tool-ui
  */
@@ -20,7 +20,16 @@ import {
 /**
  * 路由模块
  */
-import { SystemRoutingModule, declarationComponents, entryComponents, providers } from './system.routing';
+import { SystemRoutingModule, declarationComponents, entryComponents } from './system.routing';
+
+/**
+ * 服务列表
+ */
+import { PermissionService } from './services/permission.service';
+import { MenuService } from './services/menu.service';
+import { RoleService } from './services/role.service';
+import { ManagerService } from './services/manager.service';
+import { SortablejsModule } from 'angular-sortablejs/dist';
 
 @NgModule({
     imports: [
@@ -34,9 +43,9 @@ import { SystemRoutingModule, declarationComponents, entryComponents, providers 
         ImageModule,
         SelectModule,
         CheckboxModule,
+        SystemRoutingModule,
         UploadModule,
         SortablejsModule,
-        SystemRoutingModule,
     ],
     declarations: [
         declarationComponents,
@@ -45,7 +54,10 @@ import { SystemRoutingModule, declarationComponents, entryComponents, providers 
         entryComponents,
     ],
     providers: [
-        providers
+        PermissionService,
+        MenuService,
+        RoleService,
+        ManagerService,
     ]
 
 })

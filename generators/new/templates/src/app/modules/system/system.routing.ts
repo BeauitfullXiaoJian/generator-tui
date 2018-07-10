@@ -1,9 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PermissionService } from './services/permission.service';
-import { MenuService } from './services/menu.service';
-import { RoleService } from './services/role.service';
-import { ManagerService } from './services/manager.service';
 import { MenuManagerComponent } from './pages/menu-manager/menu-manager.component';
 import { PermissionManagerComponent } from './pages/permission-manager/permission-manager.component';
 import { PermissionModalComponent } from './pages/permission-manager/permission-modal.component';
@@ -41,13 +37,6 @@ export const entryComponents = [
     MenuGroupModalComponent,
     MenuModalComponent,
     RoleModalComponent,
-];
-
-export const providers = [
-    PermissionService,
-    MenuService,
-    RoleService,
-    ManagerService,
 ];
 
 @NgModule({
