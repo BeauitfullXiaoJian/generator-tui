@@ -1,0 +1,106 @@
+<ng-container *ngIf="!outlet.isActivated">
+    <div class="toolbar">
+        <!-- 日期选择组件可以放在这里 -->
+        <ts-datepicker #datepickerOne="tsDatepicker" [(ngModel)]="search.params.start" [color]="global.params.color"></ts-datepicker>
+        <ts-datepicker #datepickerTwo="tsDatepicker" [(ngModel)]="search.params.end" [color]="global.params.color"></ts-datepicker>
+    </div>
+    <div class="p-3">
+        <div class="card mb-3">
+            <h5 class="card-header">
+                <%= pageName %>
+            </h5>
+            <div class="card-body">
+                <div class="form-inline">
+                    <!-- 关键词模糊搜索 -->
+                    <div class="input-group mb-3 mr-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white"></span>
+                        </div>
+                        <input style="width:140px" [(ngModel)]="search.params.name" type="text" class="form-control"
+                            placeholder="请输入查询关键词">
+                    </div>
+                    <!-- 时间段查询 -->
+                    <div class="input-group mb-3 mr-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white">开始时间</span>
+                        </div>
+                        <input style="width:140px" tsToggle [bind]="datepickerOne" [target]="datepickerOne" type="text"
+                            [value]="search.params.start" class="form-control bg-white pointer" placeholder="开始时间"
+                            readonly>
+                        <div class="input-group-prepend input-group-append">
+                            <span class="input-group-text bg-white">到</span>
+                        </div>
+                        <input style="width:140px" tsToggle [bind]="datepickerTwo" [target]="datepickerTwo" type="text"
+                            [value]="search.params.end" class="form-control bg-white pointer" placeholder="结束时间"
+                            readonly>
+                    </div>
+                </div>
+                <!-- 查询结果&操作面板 -->
+                <div class="form-inline">
+                    <div class="input-group mr-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white">共查询到</span>
+                        </div>
+                        <input style="width:140px" type="text" value="{{pagination.total}}" class="form-control text-center bg-white"
+                            readonly placeholder="0">
+                        <div class="input-group-append">
+                            <span class="input-group-text bg-white">条/结果</span>
+                        </div>
+                    </div>
+                    <div class="m-btn">
+                        <!-- 可以使用路由跳转到添加/详情页面 -->
+                        <!-- <button class="btn btn-success" routerLink="detail">
+                            <span>添加按钮</span>
+                        </button> -->
+                        <button class="btn btn-success">
+                            <span>添加按钮</span>
+                        </button>
+                        <button (click)="doReset()" class="btn btn-white">
+                            <i class="iconfont icon-refresh mr-2"></i>
+                            <span>重置</span>
+                        </button>
+                        <button (click)="doSearch()" class="btn btn-white">
+                            <i class="iconfont icon-search mr-2"></i>
+                            <span>搜索</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <ts-table-load [display]="loading"></ts-table-load>
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead class="thead-light">
+                            <tr>
+                                <th *ngFor="let th of theads">{{th}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let td of tableRows">
+                                <td>{{td.id}}</td>
+                                <td>
+                                    <span (click)="confirmDelete(td)" tsTip="删除" class="btn-icon btn-icon-danger">
+                                        <i tsIcon="delete"></i>
+                                    </span>
+                                    <span tsTip="详情/编辑" class="btn-icon btn-icon-info">
+                                        <i tsIcon="edit"></i>
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="text-right">
+                    <ts-pagination (pageChange)="loadDatas()" [pagination]="pagination" [items]="[{text:'显示 5 条',value:5},{text:'显示 10 条',value:10},{text:'显示 20 条',value:20}]"
+                        [color]="global.params.color" goTitle="跳转" prevTitle="上一页" nextTitle="下一页" startTitle="首页"
+                        endTitle="末尾" outline></ts-pagination>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</ng-container>
+
+<router-outlet #outlet="outlet"></router-outlet>

@@ -35,7 +35,7 @@ export class RequestService {
     websocket(host: string, protocols: string | string[] = []): Observable<string> {
         let reconnent = true;
         const subject: Subject<string> = new Subject<string>();
-        interval(2000).subscribe(() => {
+        interval(HttpConfig.RECONNECT_TIME).subscribe(() => {
             if (reconnent) {
                 this.initWebsocket(host, protocols, subject, () => reconnent = true);
             }
@@ -44,7 +44,14 @@ export class RequestService {
         return subject.asObservable();
     }
 
-    initWebsocket(host: string, protocols: string | string[], subject: Subject<string>, reconnent: Function) {
+    /**
+     * 初始化一个websocket连接
+     * @param host 主机地址
+     * @param protocols 附加参数
+     * @param subject 任务调度
+     * @param reconnent 重连方法
+     */
+    private initWebsocket(host: string, protocols: string | string[], subject: Subject<string>, reconnent: Function) {
         const ws = new WebSocket(host, protocols);
         ws.onmessage = (res: MessageEvent) => { subject.next(res.data); };
         ws.onclose = () => { reconnent(); };
@@ -150,7 +157,7 @@ export class RequestService {
      * @return {Observable<ApiData>}
      */
     files(url: string, params: { [key: string]: any },
-        files: Array<{ name: string, files: Array<File> }>, check = true): Observable<ApiData> {
+        files: Array<{ name: string, files: Array<File> }> = [], check = true): Observable<ApiData> {
         const observable = this.http.post<ApiData>(
             this.serverUlr + url, this.getFormdata(params, files), { headers: this.getHeaders() });
         return check ? observable.pipe(skipWhile(res => res.result === false)) : observable;
@@ -199,7 +206,6 @@ export class RequestService {
     ossUploadRequest(url: string, file: File, useProgress = false): Observable<string | number> {
         const subject = new Subject<string | number>();
         this.url(`${url}?file=${file.name}`).subscribe(res => {
-            console.log(res);
             const request = new XMLHttpRequest();
             const formData = this.getFormdata({
                 name: file.name,
@@ -227,7 +233,7 @@ export class RequestService {
                 subject.complete();
             };
 
-            request.onerror = (error: ErrorEvent) => {
+            request.onerror = (error: any) => {
                 console.error('osssUpload=>', error);
                 subject.next('upload error');
                 subject.complete();
@@ -256,7 +262,7 @@ export class RequestService {
      * 不要添加统一前缀
      * @return {RequestService}
      */
-    withoutHost() {
+    get withoutHost(): RequestService {
         const request = new RequestService(this.http);
         request.serverUlr = '';
         request.appendHeaders = this.appendHeaders;
@@ -268,7 +274,7 @@ export class RequestService {
      * 不用添加头部数据
      * @return {RequestService}
      */
-    withoutHeader() {
+    get withoutHeader(): RequestService {
         const request = new RequestService(this.http);
         request.serverUlr = this.serverUlr;
         request.appendHeaders = this.appendHeaders;

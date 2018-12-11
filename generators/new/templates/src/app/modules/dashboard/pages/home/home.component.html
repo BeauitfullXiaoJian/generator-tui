@@ -1,244 +1,246 @@
-<div class="row pt-4">
-    <div class="col-xl-3 col-md-6 mb-5">
-        <div class="card">
-            <div class="card-body">
-                <div class="icon-item text-right">
-                    <i class="left-icon bg-danger text-center fa fa-bar-chart"></i>
-                    <p class="text-muted">平台统计</p>
-                    <h4 class="text-right text-danger">+10245</h4>
+<div class="p-3">
+    <div class="row">
+        <div class="col-xl-3 col-lg-6 col-sm-12 mb-3">
+            <div class="card card-body h-100">
+                <div class="text-secondary">总销售额</div>
+                <h3 class="mt-2">¥ 126,560</h3>
+                <div style="height:50px;">
+                    <div class="mt-4">
+                        <i class="iconfont icon-pin text-danger"></i>
+                        周同比12%
+                        <i class="iconfont icon-map ml-1 text-success"></i>
+                        日环比11%
+                    </div>
                 </div>
                 <hr>
-                <p>
-                    <small class="text-danger">
-                        <i class="fa fa-bar-chart"></i>
-                        <span>平台运行统计数目 </span>
-                        <i class="fa fa-angle-right"></i>
-                    </small>
-                </p>
+                <div class="text-secondary">日均销售额：￥12,423</div>
             </div>
         </div>
-    </div>
-    <div class="col-xl-3 col-md-6 mb-5">
-        <div class="card">
-            <div class="card-body">
-                <div class="icon-item text-right">
-                    <i class="left-icon bg-warning text-center fa fa-eye"></i>
-                    <p class="text-muted">访问量</p>
-                    <h4 class="text-right text-warning">+54</h4>
+        <div class="col-xl-3 col-lg-6 col-sm-12 mb-3">
+            <div class="card card-body h-100">
+                <div class="text-secondary">访问量</div>
+                <h3 class="mt-2">8848</h3>
+                <div tsEchart [option]="optionOne" resize="true" style="height:50px;width:100%;"></div>
+                <hr>
+                <div class="text-secondary">日访问量：1,234</div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-lg-6 col-sm-12 mb-3">
+            <div class="card card-body h-100">
+                <div class="text-secondary">支付笔数</div>
+                <h3 class="mt-2">6560</h3>
+                <div tsEchart [option]="optionTwo" resize="true" style="height:50px;width:100%;"></div>
+                <hr>
+                <div class="text-secondary">转化率：60%</div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-lg-6 col-sm-12 mb-3">
+            <div class="card card-body h-100">
+                <div class="text-secondary">运营活动效果</div>
+                <h3 class="mt-2">78%</h3>
+                <div style="height:50px;">
+                    <div class="progress mt-4">
+                        <div class="progress-bar bg-info" role="progressbar" style="width: 75%" aria-valuenow="75"
+                            aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
                 </div>
                 <hr>
+                <div class="text-secondary">
+                    <i class="iconfont icon-pin text-danger"></i>
+                    周同比 12%
+                    <i class="iconfont icon-map ml-1 text-success"></i>
+                    日环比 11%
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card mb-3">
+        <div class="card-header" style="line-height: 2;">
+            <ts-tabs [tabs]="['销售额','访问量']" activeTab="销售额"></ts-tabs>
+        </div>
+        <div class="ml-3 mr-3 row">
+            <div class="col-xl-8 mb-4">
+                <p><b>销售额趋势</b></p>
+                <div tsEchart [option]="optionThree" resize="true" style="min-height: 200px;height:100%;width:100%;"></div>
+            </div>
+            <div class="col-xl-4 mb-4">
                 <p>
-                    <small class="text-warning">
-                        <i class="fa fa-eye"></i>
-                        <span>今日站点访问量 </span>
-                        <i class="fa fa-angle-right"></i>
-                    </small>
+                    <b>门店销售额排名</b>
                 </p>
+                <ul class="p-0 m-0" style="list-style: none;line-height: 3;">
+                    <li class="d-flex justify-content-between">
+                        <div>
+                            <span class="badge-dark badge-circle badge-light mr-3">1</span>
+                            <span class="mr-5">工专路 0 号店</span>
+                        </div>
+                        <span>323,234</span>
+                    </li>
+                    <li class="d-flex justify-content-between">
+                        <div>
+                            <span class="badge-circle badge-dark mr-3">2</span>
+                            <span class="mr-5">工专路 1 号店</span>
+                        </div>
+                        <span>323,234</span>
+                    </li>
+                    <li class="d-flex justify-content-between">
+                        <div>
+                            <span class="badge-circle badge-dark mr-3">3</span>
+                            <span class="mr-5">工专路 2 号店</span>
+                        </div>
+                        <span>323,234</span>
+                    </li>
+                    <li class="d-flex justify-content-between">
+                        <div>
+                            <span class="badge-circle badge-light mr-3">4</span>
+                            <span class="mr-5">工专路 3 号店</span>
+                        </div>
+                        <span>323,234</span>
+                    </li>
+                    <li class="d-flex justify-content-between">
+                        <div>
+                            <span class="badge-circle badge-light mr-3">5</span>
+                            <span class="mr-5">工专路 4 号店</span>
+                        </div>
+                        <span>323,234</span>
+                    </li>
+                    <li class="d-flex justify-content-between">
+                        <div>
+                            <span class="badge-circle badge-light mr-3">6</span>
+                            <span class="mr-5">工专路 5 号店</span>
+                        </div>
+                        <span>323,234</span>
+                    </li>
+                    <li class="d-flex justify-content-between">
+                        <div>
+                            <span class="badge-circle badge-light mr-3">7</span>
+                            <span class="mr-5">工专路 6 号店</span>
+                        </div>
+                        <span>323,234</span>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
-    <div class="col-xl-3 col-md-6 mb-5">
-        <div class="card">
-            <div class="card-body">
-                <div class="icon-item text-right">
-                    <i class="left-icon bg-success text-center fa fa-wechat"></i>
-                    <p class="text-muted">新增用户</p>
-                    <h4 class="text-right text-success">+54</h4>
-                </div>
-                <hr>
-                <p>
-                    <small class="text-success">
-                        <i class="fa fa-wechat"></i>
-                        <span>今日新增用户 </span>
-                        <i class="fa fa-angle-right"></i>
-                    </small>
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class="col-xl-3 col-md-6 mb-5">
-        <div class="card">
-            <div class="card-body">
-                <div class="icon-item text-right">
-                    <i class="left-icon bg-info text-center fa fa-comments-o"></i>
-                    <p class="text-muted">反馈报告</p>
-                    <h4 class="text-right text-info">+200</h4>
-                </div>
-                <hr>
-                <p>
-                    <small class="text-info">
-                        <i class="fa fa-comments-o"></i>
-                        <span>今日收到的用户反馈报告 </span>
-                        <i class="fa fa-angle-right"></i>
-                    </small>
-                </p>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row home-card-list m-btn">
-    <div class="col-xl-4 mb-3">
-        <div class="card">
-            <img class="card-img-top" src="assets/images/material/material-1.jpg" alt="Card image cap">
-            <div class="card-body">
-                <h4 class="card-title">Internal Accounts Facilitator</h4>
-                <p class="card-text">Deleniti eos omnis consequatur quasi quia. Hic nesciunt assumenda autem voluptas necessitatibus quos accusantium
-                    molestiae. Quia beatae eius accusantium error saepe beatae aut. Debitis ad tempora minima sed et. Minus
-                    soluta quaerat possimus.</p>
-                <div class="text-right">
-                    <span class="text-muted pull-left font-weight-light">—— 2017年11月6日</span>
-                    <button class="btn btn-danger">
-                        <i class="fa fa-fw fa-heart"></i>喜欢+11</button>
-                    <button class="btn btn-info text-white">
-                        <i class="fa fa-fw fa-star"></i>收藏+8</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-xl-4 mb-3">
-        <div class="card">
-            <img class="card-img-top" src="assets/images/material/material-2.jpg" alt="Card image cap">
-            <div class="card-body">
-                <h4 class="card-title">Nikolas Thiel</h4>
-                <p class="card-text">Deleniti eos omnis consequatur quasi quia. Hic nesciunt assumenda autem voluptas necessitatibus quos accusantium
-                    molestiae. Quia beatae eius accusantium error saepe beatae aut. Debitis ad tempora minima sed et. Minus
-                    soluta quaerat possimus.</p>
-                <div class="text-right">
-                    <span class="text-muted pull-left font-weight-light">—— 2017年11月6日</span>
-                    <button class="btn btn-danger">
-                        <i class="fa fa-fw fa-heart"></i>喜欢+12</button>
-                    <button class="btn btn-info text-white">
-                        <i class="fa fa-fw fa-star"></i>收藏+9</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-xl-4 mb-3">
-        <div class="card">
-            <img class="card-img-top" src="assets/images/material/material-3.jpg" alt="Card image cap">
-            <div class="card-body">
-                <h4 class="card-title">Solutions</h4>
-                <p class="card-text">Deleniti eos omnis consequatur quasi quia. Hic nesciunt assumenda autem voluptas necessitatibus quos accusantium
-                    molestiae. Quia beatae eius accusantium error saepe beatae aut. Debitis ad tempora minima sed et. Minus
-                    soluta quaerat possimus.</p>
-                <div class="text-right">
-                    <span class="text-muted pull-left font-weight-light">—— 2017年11月6日</span>
-                    <button class="btn btn-danger">
-                        <i class="fa fa-fw fa-heart"></i>喜欢+13</button>
-                    <button class="btn btn-info text-white">
-                        <i class="fa fa-fw fa-star"></i>收藏+10</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<br>
-<div class="row home-card-list">
-    <div class="col-sm-6 mb-3">
-        <div class="card rounded-0">
-            <div class="card-body">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col" class="border-0">#</th>
-                            <th scope="col" class="border-0">First Name</th>
-                            <th scope="col" class="border-0">Last Name</th>
-                            <th scope="col" class="border-0">Username</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-6 mb-3">
-        <div class="card rounded-0">
-            <div class="card-body">
-                <table class="table table-hover">
-                    <thead class="text-info">
-                        <tr>
-                            <th scope="col" class="border-0">No.</th>
-                            <th scope="col" class="border-0">First Name</th>
-                            <th scope="col" class="border-0">Last Name</th>
-                            <th scope="col" class="border-0">Username</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-6">
-        <div class="card rounded-0">
-            <div class="card-header bg-white">Media List</div>
-            <div class="card-body">
-                <ng-container *ngFor="let media of mediaList">
-                    <div class="media">
-                        <img class="mr-3 rounded-circle" height="50" [src]="media.avatar" alt="avatar">
-                        <div class="media-body">
-                            <h5 class="mt-0">{{media.nick}}</h5>
-                            {{media.email}}.
+    <div class="row">
+        <div class="col-xl-6">
+            <div class="card pb-3">
+                <div class="card-header border-bottom">线上热门搜索</div>
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <div class="w-50 mr-3">
+                            <p class="text-secondary">搜索用户数</p>
+                            <div>
+                                <h4>12,321</h4>
+                            </div>
+                            <div tsEchart [option]="optionFour" resize="true" style="height:50px;width:100%;"></div>
+                        </div>
+                        <div class="w-50 ml-3">
+                            <p class="text-secondary">人均搜索次数</p>
+                            <div>
+                                <h4>2.7</h4>
+                            </div>
+                            <div tsEchart [option]="optionFour" resize="true" style="height:50px;width:100%;"></div>
                         </div>
                     </div>
-                    <hr>
-                </ng-container>
+                    <table class="table table-hover table-striped mt-2">
+                        <thead class="bg-light">
+                            <tr>
+                                <th>排名</th>
+                                <th>搜索关键词</th>
+                                <th>用户数</th>
+                                <th>涨幅</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>搜索关键词-1</td>
+                                <td>303</td>
+                                <td>33%
+                                    <i class="iconfont icon-caret-up text-danger"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>搜索关键词-2</td>
+                                <td>413</td>
+                                <td>80%
+                                    <i class="iconfont icon-caret-down text-success"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>搜索关键词-1</td>
+                                <td>303</td>
+                                <td>33%
+                                    <i class="iconfont icon-caret-up text-danger"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>搜索关键词-2</td>
+                                <td>413</td>
+                                <td>80%
+                                    <i class="iconfont icon-caret-down text-success"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>搜索关键词-1</td>
+                                <td>303</td>
+                                <td>33%
+                                    <i class="iconfont icon-caret-up text-danger"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>搜索关键词-2</td>
+                                <td>413</td>
+                                <td>80%
+                                    <i class="iconfont icon-caret-down text-success"></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col-md-6">
-        <div class="card rounded-0 bg-dark text-light">
-            <div class="card-header">Media List</div>
-            <div class="card-body">
-                <ng-container *ngFor="let media of mediaList">
-                    <div class="media">
-                        <img class="mr-3 rounded-circle border" height="50" [src]="media.avatar" alt="avatar">
-                        <div class="media-body">
-                            <h5 class="mt-0">{{media.nick}}</h5>
-                            {{media.email}}.
+        <div class="col-xl-6">
+            <div class="card h-100">
+                <div class="card-header border-bottom">销售额类别占比</div>
+                <div class="card-body flex-grow-1 d-flex">
+                    <div class="position-relative flex-grow-1">
+                        <div class="position-absolute h-100 w-100 top left d-flex align-items-center">
+                            <div class="w-100 text-center">
+                                <p class="text-secondary">销售额</p>
+                                <h4>¥ 15,781</h4>
+                            </div>
                         </div>
+                        <div tsEchart [option]="optionPie" resize="true" class="w-100 h-100"></div>
                     </div>
-                    <hr class="hr-light">
-                </ng-container>
+                    <div class="flex-shrink-0 text-muted align-self-center" style="line-height:3;">
+                        <p>
+                            <span class="dot dot-info"></span>
+                            <span class="ml-2">家用电器 | 28.79% ¥ 4,544</span>
+                        </p>
+                        <p>
+                            <span class="dot dot-success"></span>
+                            <span class="ml-2">食用酒水 | 21.04% ¥ 3,321</span>
+                        </p>
+                        <p>
+                            <span class="dot dot-warning"></span>
+                            <span class="ml-2">个护健康 | 19.73% ¥ 3,113</span>
+                        </p>
+                        <p>
+                            <span class="dot dot-pink"></span>
+                            <span class="ml-2">服饰箱包 | 14.83% ¥ 2,341</span>
+                        </p>
+                        <p>
+                            <span class="dot dot-purple"></span>
+                            <span class="ml-2">母婴产品 | 08.80% ¥ 1,231</span>
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

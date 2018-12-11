@@ -1,70 +1,59 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ApiData } from '../classes';
 import { RequestService } from './request.service';
-import {
-    Pagination,
-    MenuModel,
-    MenuGroup,
-    MenuItem,
-} from 'ng-tools-ui';
-import { Observable, Subject } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Injectable()
 export class MenuService {
 
-    menuModels = new Array<MenuModel>();
+    menuModels = new Array<any>();
 
     constructor(private request: RequestService) { }
+
+    loadMenu(): Observable<ApiData> {
+        this.menuModels = [];
+        return this.request.url('/managerapi/menu').pipe(tap(res => {
+            this.menuModels = this.formatMenuData(res.datas);
+        }));
+    }
 
     /**
      * 加载系统菜单
      */
-    loadMenu(): Observable<boolean> {
-        const subject = new Subject<boolean>();
-        this.request.url('/managerapi/menu', false)
-            .subscribe(res => {
+    formatMenuData(datas: any): any {
 
-                // 发射轻轻结果消息
-                subject.next(res.result);
-                subject.complete();
-
-                // 判断菜单是否加载成功
-                if (res.result === false) { return; }
-
-                // 清空当前菜单，避免多次重复加载
-                this.menuModels = [];
-
-                // 解析菜单数据
-                const menus = res.datas;
-                menus.forEach(model => {
-                    const menuModel = {
-                        modelTitle: model.title,
-                        menuGroups: new Array<MenuGroup>(),
+        this.menuModels = [];
+        const menus = datas;
+        menus.forEach(model => {
+            const menuModel = {
+                modelTitle: model.title,
+                menuGroups: new Array<any>(),
+                active: false
+            };
+            model.menus.forEach(menu => {
+                const menuGroup: any = {
+                    groupTitle: menu.title,
+                    icon: menu.icon,
+                    image: menu.image,
+                    menuItems: new Array<any>(),
+                    targetModel: menuModel,
+                    active: false
+                };
+                menu.children.forEach(child => {
+                    const menuItem: any = {
+                        title: child.title,
+                        url: child.url,
+                        targetGroup: menuGroup,
                         active: false
                     };
-                    model.menus.forEach(menu => {
-                        const menuGroup: MenuGroup = {
-                            groupTitle: menu.title,
-                            icon: menu.icon,
-                            image: menu.image,
-                            menuItems: new Array<MenuItem>(),
-                            targetModel: menuModel,
-                            active: false
-                        };
-                        menu.children.forEach(child => {
-                            const menuItem: MenuItem = {
-                                title: child.title,
-                                url: child.url,
-                                targetGroup: menuGroup,
-                                active: false
-                            };
 
-                            menuGroup.menuItems.push(menuItem);
-                        });
-                        menuModel.menuGroups.push(menuGroup);
-                    });
-                    this.menuModels.push(menuModel);
+                    menuGroup.menuItems.push(menuItem);
                 });
+                menuModel.menuGroups.push(menuGroup);
             });
-        return subject.asObservable();
+            this.menuModels.push(menuModel);
+        });
+        return this.menuModels;
     }
 }

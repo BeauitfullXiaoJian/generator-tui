@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MenuGroup } from '../../interfaces/menu.interface';
-import { ModalService, ToastService } from 'ng-tools-ui';
+import { ModalService, ToastService } from 'ng-tui';
 import { MenuService } from '../../services/menu.service';
 
 @Component({
@@ -19,7 +19,7 @@ import { MenuService } from '../../services/menu.service';
     </div>
     <div class="modal-footer">
         <button (click)="modal.dismiss()" type="button" class="btn btn-white">取消</button>
-        <button tsBtn loading color="primary" (submit)="confirmSave($event)" [disabled]="!menuGroup.menuGroupName">确认保存</button>
+        <button tsBtn loading color="info" (submit)="confirmSave($event)" [disabled]="!menuGroup.menuGroupName">确认保存</button>
     </div>`,
 })
 export class MenuGroupModalComponent {

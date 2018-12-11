@@ -1,0 +1,34 @@
+<div class="toolbar"></div>
+<div class="p-3">
+    <div class="card mb-3">
+        <h5 class="card-header">消息提示</h5>
+        <div class="card-body">
+            <p class="text-muted">每次执行对应操作时，需要显示操作的结果。提示信息通常会自动消失，重要的消息可以设置常驻。</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card mb-3">
+                <div class="card-header bg-white border-bottom d-flex justify-content-between">
+                    <span>简单例子</span>
+                    <a href="https://www.cool1024.com/gitbook/TOAST.html" target="blank">参考文档</a>
+                </div>
+                <div class="card-body m-btn">
+                    <button (click)="showToast('success')" tsBtn color="success">Success</button>
+                    <button (click)="showToast('info')" tsBtn color="info">Info</button>
+                    <button (click)="showToast('warning')" tsBtn color="warning">Warning</button>
+                    <button (click)="showToast('danger')" tsBtn color="danger">Danger</button>
+                    <button (click)="showCustom()" tsBtn>Custom</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card mb-3">
+                <div class="card-header border-bottom">参考代码</div>
+                <div class="card-body">
+                    <ts-prism [code]="simpleCode" language="typescript"></ts-prism>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
-import { ModalService, ToastService } from 'ng-tools-ui';
+import { Component, OnInit } from '@angular/core';
+import { ModalService, ToastService } from 'ng-tui';
 import { Role } from '../../interfaces/role.interface';
 import { RoleService } from '../../services/role.service';
 import { GlobalService } from '../../../../cores/services';
-import { PermissionGroup, PermissionGroupItem } from '../../interfaces/permission.interface';
+import { PermissionGroupItem } from '../../interfaces/permission.interface';
 
 @Component({
     template: `
@@ -31,8 +31,8 @@ import { PermissionGroup, PermissionGroupItem } from '../../interfaces/permissio
                     <ts-switch
                         [ngModel]="hasPermission(permission.id)!==false"
                         (ngModelChange)="changePermission(permission.id, $event)"
-                        [color]="global.getValue('color')"></ts-switch>
-                    <span class="ml-1 mr-1 {{hasPermission(permission.id)!==false?'text-'+global.getValue('color'):''}}">
+                        [color]="global.params.color"></ts-switch>
+                    <span class="ml-1 mr-1 {{hasPermission(permission.id)!==false?'text-'+global.params.color:''}}">
                         {{permission.permissionName}}
                     </span>
                 </ng-container>
@@ -45,7 +45,7 @@ import { PermissionGroup, PermissionGroupItem } from '../../interfaces/permissio
     <button tsBtn loading color="primary" (submit)="confirmSave($event)">确认保存</button>
 </div>`,
 })
-export class RoleModalComponent {
+export class RoleModalComponent implements OnInit {
 
     role: Role;
 
@@ -61,6 +61,10 @@ export class RoleModalComponent {
     ) {
         this.roleService.getPermissionOptions()
             .subscribe(permissionGroups => this.permissionGroupItems = permissionGroups);
+    }
+
+    ngOnInit() {
+        this.role.permissionIds = this.role.permissionIds || [];
     }
 
     /**

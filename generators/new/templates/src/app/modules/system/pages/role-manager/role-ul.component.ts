@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { RoleGroup } from '../../interfaces/role.interface';
 
 @Component({
@@ -9,24 +9,24 @@ import { RoleGroup } from '../../interfaces/role.interface';
             class="d-table w-100 list-none p-2 border border-muted mb-2">
             <div class="d-table-row">
                 <div tsToggle class="d-table-cell pointer">
-                    <button *ngIf="roleGroup.roleChildren.length>0" class="btn btn-sm btn-success mr-2">
-                        <i class="fa fa-fw fa-angle-right" [class.fa-rotate-90]="tsCollapse.open"></i>
+                    <button *ngIf="roleGroup.roleChildren.length>0" class="btn btn-sm btn-info mr-2">
+                        <i class="iconfont icon-next" [class.fa-rotate-90]="tsCollapse.open"></i>
                     </button>
                     <button *ngIf="roleGroup.roleChildren.length===0" class="btn btn-sm btn-outline-white mr-2" disabled>
-                        <i class="fa fa-fw fa-angle-right"></i>
+                        <i class="iconfont icon-next"></i>
                     </button>
                     {{roleGroup.role.roleName}}
                 </div>
                 <div class="d-table-cell text-right">
-                    <a (click)="sendInsertEvent(roleGroup)" class="btn-icon btn-icon-success" title="添加">
-                        <i class="fa fa-lg fa-fw fa-plus align-middle"></i>
-                    </a>
-                    <a (click)="sendUpdateEvent(roleGroup)" class="btn-icon btn-icon-info" title="编辑">
-                        <i class="fa fa-lg fa-fw fa-edit align-middle"></i>
-                    </a>
-                    <a (click)="sendDeleteEvent(roleGroup)" class="btn-icon btn-icon-danger" title="删除">
-                        <i class="fa fa-lg fa-fw fa-trash-o align-middle"></i>
-                    </a>
+                    <span (click)="sendInsertEvent(roleGroup)" class="btn-icon btn-icon-success" tsTip="添加">
+                        <i class="iconfont icon-add-circle"></i>
+                    </span>
+                    <span (click)="sendUpdateEvent(roleGroup)" class="btn-icon btn-icon-info" tsTip="编辑">
+                        <i class="iconfont icon-edit"></i>
+                    </span>
+                    <span (click)="sendDeleteEvent(roleGroup)" class="btn-icon btn-icon-danger" tsTip="删除">
+                        <i class="iconfont icon-delete"></i>
+                    </span>
                 </div>
             </div>
         </li>

@@ -1,0 +1,21 @@
+/**
+ * 请编写页面文件说明
+ *
+ * @author 填写作者
+ * @file   <%= pageName %>.component.ts
+ * @date   <%= date %>
+ */
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+    templateUrl: './<%= pageName %>.component.html',
+    styleUrls: ['./<%= pageName %>.component.scss']
+})
+export class <%= upPageName %>Component implements OnInit {
+
+    constructor() { }
+
+    ngOnInit() {
+
+    }
+}

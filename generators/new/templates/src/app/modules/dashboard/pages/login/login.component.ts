@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AppConfig } from '../../../../configs/app.config';
-import { Account } from '../../interfaces/account.interface';
 import { Router } from '@angular/router';
 import { GlobalService, RequestService, MenuService, AuthService } from '../../../../cores/services';
 import { HttpConfig } from '../../../../configs/http.config';
+import { Account } from './account.interface';
 
 @Component({
     selector: 'app-login',
@@ -29,7 +29,7 @@ export class LoginComponent {
     ) { }
 
     confirmLogin(btn: any) {
-        this.request.withoutHeader().post('/managerapi/signin', this.account).subscribe({
+        this.request.withoutHeader.post('/managerapi/signin', this.account).subscribe({
             next: res => {
                 const datas = res.datas;
                 this.global.setValuesToStorage({
@@ -38,10 +38,11 @@ export class LoginComponent {
                     'ng-params-three': datas.platform,
                 });
                 this.auth.loadUserDeail();
-                this.menu.loadMenu();
+                this.menu.loadMenu().subscribe();
+                // this.menu.loadMenu();
                 this.router.navigateByUrl('/');
             },
-            complete: () => btn.dismiss()
+            complete: btn.dismiss()
         });
     }
 }

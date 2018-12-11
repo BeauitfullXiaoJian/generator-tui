@@ -2,22 +2,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 /**
- * tool-ui
- */
-import {
-    ButtonModule,
-    ModalModule,
-    PaginationModule,
-    ConfirmModule,
-    CheckboxModule,
-    CollapseModule,
-    TabModule,
-    ImageModule,
-    SelectModule,
-    UploadModule,
-} from 'ng-tools-ui';
-
-/**
  * 路由模块
  */
 import { SystemRoutingModule, declarationComponents, entryComponents } from './system.routing';
@@ -30,21 +14,13 @@ import { MenuService } from './services/menu.service';
 import { RoleService } from './services/role.service';
 import { ManagerService } from './services/manager.service';
 import { SortablejsModule } from 'angular-sortablejs/dist';
+import { ShareModule } from '../../cores/share.module';
 
 @NgModule({
     imports: [
         FormsModule,
-        ButtonModule,
-        ModalModule,
-        PaginationModule,
-        ConfirmModule,
-        CollapseModule,
-        TabModule,
-        ImageModule,
-        SelectModule,
-        CheckboxModule,
+        ShareModule,
         SystemRoutingModule,
-        UploadModule,
         SortablejsModule,
     ],
     declarations: [

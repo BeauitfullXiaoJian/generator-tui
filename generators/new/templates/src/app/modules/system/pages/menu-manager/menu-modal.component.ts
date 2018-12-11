@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { Menu } from '../../interfaces/menu.interface';
-import { ModalService, ToastService, Item } from 'ng-tools-ui';
+import { ModalService, ToastService, Item } from 'ng-tui';
 import { MenuService } from '../../services/menu.service';
-import { Permission } from '../../interfaces/permission.interface';
 
 @Component({
     template: `
@@ -29,7 +28,7 @@ import { Permission } from '../../interfaces/permission.interface';
     </div>
     <div class="modal-footer">
         <button (click)="modal.dismiss()" type="button" class="btn btn-white">取消</button>
-        <button tsBtn loading color="primary" (submit)="confirmSave($event)" [disabled]="!menu.menuTitle">确认保存</button>
+        <button tsBtn loading color="info" (submit)="confirmSave($event)" [disabled]="!menu.menuTitle">确认保存</button>
     </div>`,
 })
 export class MenuModalComponent {

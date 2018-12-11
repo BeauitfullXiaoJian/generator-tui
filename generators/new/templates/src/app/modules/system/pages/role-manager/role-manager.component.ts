@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RoleGroup, Role } from '../../interfaces/role.interface';
-import { ModalService, ConfirmService } from 'ng-tools-ui';
+import { ModalService, ConfirmService } from 'ng-tui';
 import { RoleModalComponent } from './role-modal.component';
 import { RoleService } from '../../services/role.service';
-import { ThrowStmt } from '@angular/compiler';
-import { FormService } from '../../../../cores/services';
 import { switchMap } from 'rxjs/operators';
 import { ApiData } from '../../../../cores/classes';
 
@@ -28,7 +26,6 @@ export class RoleManagerComponent implements OnInit {
         private modal: ModalService,
         private confirm: ConfirmService,
         private roleService: RoleService,
-        private form: FormService,
     ) { }
 
     ngOnInit() {
@@ -46,14 +43,14 @@ export class RoleManagerComponent implements OnInit {
             id: 0,
             roleName: '无上级角色',
         };
-        modal.instance.role = this.form.jsonCopy(roleGroup.role);
+        modal.instance.role = Object.assign({}, roleGroup.role);
         modal.open().subscribe((role: Role) => {
             roleGroup.role = role;
         });
     }
 
     showAddModal(parentGroup: RoleGroup) {
-        const modal = this.modal.create(RoleModalComponent);
+        const modal = this.modal.create(RoleModalComponent, { size: 'lg' });
         modal.instance.parentRole = parentGroup.role || {
             id: 0,
             roleName: '无上级角色',
