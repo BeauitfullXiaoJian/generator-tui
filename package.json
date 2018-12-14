@@ -3,7 +3,7 @@
         "name": "cool1024"
     },
     "name": "generator-tui",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "description": "tools-ui-cli",
     "files": [
         "generators"

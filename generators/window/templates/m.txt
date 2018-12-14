@@ -6,7 +6,7 @@
  * @date   <%= date %>
  */
 import { Component, OnInit } from '@angular/core';
-import { WindowViewService } from 'ng-tools-ui';
+import { WindowViewService } from 'ng-ui';
 
 @Component({
     templateUrl: './<%= modalName %>.component.html',
